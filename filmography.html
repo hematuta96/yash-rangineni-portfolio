@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filmography | Yash Rangineni</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+background:#080402;
+color:white;
+font-family:'Montserrat',sans-serif;
+overflow-x:hidden;
+}
+
+a{
+text-decoration:none;
+color:white;
+}
+
+/* NAVBAR */
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:1000;
+padding:25px 80px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,.95);
+}
+
+.logo{
+font-size:28px;
+color:#c8a47a;
+}
+
+nav ul{
+display:flex;
+gap:35px;
+list-style:none;
+}
+
+nav a{
+font-size:14px;
+letter-spacing:2px;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c8a47a;
+}
+
+/* HERO */
+.page-hero{
+padding:220px 10% 120px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#120906;
+}
+
+.page-hero h1{
+font-family:'Cormorant Garamond',serif;
+font-size:90px;
+font-weight:600;
+margin-top:20px;
+}
+
+.page-hero p{
+max-width:550px;
+line-height:1.9;
+color:#d6d6d6;
+font-size:18px;
+}
+
+.breadcrumb{
+color:#c8a47a;
+letter-spacing:3px;
+font-size:14px;
+}
+
+/* MOVIE SECTIONS */
+.movie{
+display:flex;
+align-items:stretch;
+min-height:500px;
+background:#080402;
+overflow:hidden;
+}
+
+.movie-image{
+    width:50%;
+    height:auto; /* allow natural image height */
+    position:relative;
+    overflow:hidden;
+}
+
+.movie-image img{
+    width:100%;
+    height:auto;
+    object-fit:contain;
+    display:block;
+    image-rendering:auto;
+}
+
+.movie-image::after {
+content:'';
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.15);
+z-index:1;
+pointer-events:none;
+}
+
+.movie-content{
+width:50%;
+padding:60px 80px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+box-sizing:border-box;
+}
+
+.movie span{
+color:#c8a47a;
+letter-spacing:3px;
+font-size:14px;
+}
+
+.movie h2{
+font-family:'Cormorant Garamond',serif;
+font-size:56px;
+margin:20px 0;
+color:#fff;
+line-height:1.1;
+}
+
+.movie h4{
+color:#c8a47a;
+letter-spacing:3px;
+margin-bottom:25px;
+font-weight:500;
+}
+
+.movie p{
+line-height:1.9;
+font-size:18px;
+color:#d9d9d9;
+}
+
+/* Alternate Layout Ordering */
+/* Movie 1 (Default): Text Left, Image Right */
+.movie .movie-content {
+order:1;
+}
+.movie .movie-image {
+order:2;
+}
+
+/* Movie 2 (Alternating): Image Left, Text Right */
+.movie.right .movie-content {
+order:2;
+padding-left:100px;
+}
+.movie.right .movie-image {
+order:1;
+}
+
+/* Gap between movie sections */
+.movie + .movie{
+    margin-top: 150px;
+}
+
+/* OTHER PRODUCTIONS */
+.other{
+    padding:140px 10% 220px;
+}
+
+.other-sub{
+text-align:center;
+letter-spacing:4px;
+color:#c8a47a;
+margin-bottom:20px;
+}
+
+.other h2{
+font-family:'Cormorant Garamond',serif;
+font-size:70px;
+text-align:center;
+margin-bottom:20px;
+}
+
+.other p{
+text-align:center;
+color:#d6d6d6;
+margin-bottom:70px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:40px;
+}
+
+.card{
+background:#150905;
+overflow:hidden;
+}
+
+.card img{
+    width:100%;
+    height:520px;
+    object-fit:cover;
+}
+
+.card-content{
+padding:30px;
+}
+
+.card h3{
+font-family:'Cormorant Garamond',serif;
+font-size:42px;
+margin-bottom:10px;
+}
+
+.card span{
+color:#c8a47a;
+letter-spacing:2px;
+font-size:14px;
+display:block;
+margin-bottom:15px;
+}
+
+.card p{
+text-align:left;
+line-height:1.8;
+margin:0;
+}
+
+/* FOOTER */
+.footer{
+    background:#000;
+    padding:150px 10%;
+    display:flex;
+    justify-content:space-between;
+    gap:120px;
+}
+
+.footer-left{
+    flex:1;
+}
+
+.footer-right{
+    width:450px;
+}
+
+.footer-left h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:72px;
+    line-height:1.15;
+    max-width:700px;
+    margin-bottom:35px;
+}
+
+.footer-left p{
+    max-width:600px;
+    line-height:1.8;
+    color:#d5d5d5;
+    margin-bottom:50px;
+}
+
+.footer-nav{
+    display:flex;
+    gap:35px;
+    flex-wrap:wrap;
+}
+
+.footer-nav a{
+    font-size:14px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.footer-nav a:hover{
+    color:#c8a47a;
+}
+
+.footer-right h4{
+letter-spacing:3px;
+color:#c8a47a;
+margin-bottom:15px;
+}
+
+.footer-right a{
+display:block;
+font-size:32px;
+margin-bottom:50px;
+text-decoration:underline;
+}
+
+.visit-btn{
+display:inline-block;
+padding:18px 60px;
+border:1px solid #c8a47a;
+margin-top:20px;
+transition:.3s;
+}
+
+.visit-btn:hover{
+background:#c8a47a;
+color:black;
+}
+
+@media(max-width:900px){
+.page-hero{
+flex-direction:column;
+gap:40px;
+}
+.grid{
+grid-template-columns:1fr;
+}
+.movie{
+flex-direction:column;
+height:auto;
+min-height:auto;
+}
+.movie-image{
+width:100%;
+height:350px;
+}
+.movie-content{
+width:100%;
+padding:40px 30px;
+}
+/* On mobile/tablet, keep Image on top, Text below */
+.movie .movie-image,
+.movie.right .movie-image{
+order:1;
+}
+.movie .movie-content,
+.movie.right .movie-content{
+order:2;
+padding-left:30px;
+}
+.movie h2{
+font-size:48px;
+}
+.footer{
+flex-direction:column;
+gap:50px;
+}
+}
+
+/* --- PREMIUM EFFECTS & ANIMATIONS --- */
+.reveal{
+    opacity:0;
+    transform:translateY(50px);
+    transition:opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+               transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+.reveal-delay-1{ transition-delay:0.1s; }
+.reveal-delay-2{ transition-delay:0.2s; }
+.reveal-delay-3{ transition-delay:0.3s; }
+.reveal-delay-4{ transition-delay:0.4s; }
+
+.parallax-container {
+    overflow: hidden;
+    position: relative;
+}
+.parallax-img {
+    height: 120% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    position: relative;
+    will-change: transform;
+}
+
+/* Custom Cursor Trail */
+.cursor-dot{
+    position:fixed;
+    width:8px;
+    height:8px;
+    background:#c8a47a;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9999;
+    transition:transform 0.15s ease;
+    mix-blend-mode:difference;
+}
+.cursor-ring{
+    position:fixed;
+    width:35px;
+    height:35px;
+    border:1.5px solid rgba(200,164,122,0.5);
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9998;
+    transition:transform 0.08s ease, width 0.3s ease, height 0.3s ease;
+}
+.cursor-ring.expand{
+    width:55px;
+    height:55px;
+    border-color:rgba(200,164,122,0.8);
+}
+.film-grain{
+    position:fixed;
+    inset:0;
+    z-index:9998;
+    pointer-events:none;
+    opacity:0.035;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    background-repeat:repeat;
+    background-size:128px 128px;
+}
+
+/* Scroll To Top Button */
+#scrollTopBtn{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    border: 1px solid #c7a16b;
+    border-radius: 50%;
+    background: #000;
+    color: #c7a16b;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+    z-index: 9999;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(199,161,107,0.4);
+}
+#scrollTopBtn:hover{
+    background: #fff;
+    color: #000;
+    transform: translateY(-5px);
+}
+
+/* Hover lifts and visual highlights */
+.card {
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease;
+    overflow: hidden;
+}
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(200,164,122,0.15);
+}
+.card img {
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.card:hover img {
+    transform: scale(1.05);
+}
+
+/* Gold navigation underlines */
+nav ul li a{
+    position:relative;
+    padding-bottom:4px;
+}
+nav ul li a::after{
+    content:'';
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:0;
+    height:2px;
+    background:linear-gradient(90deg, #c8a47a, #e8d5b8);
+    transition:width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+nav ul li a:hover::after{
+    width:100%;
+}
+
+@media(max-width:768px){
+    .cursor-dot, .cursor-ring {
+        display:none !important;
+    }
+    #scrollTopBtn{
+        width:50px;
+        height:50px;
+        font-size:20px;
+        bottom:20px;
+        right:20px;
+    }
+}
+</style>
+</head>
+<body>
+    <!-- Custom Cursor Trail -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <!-- Film Grain Overlay -->
+    <div class="film-grain"></div>
+
+    <header>
+        <div class="logo">★</div>
+        <nav>
+            <ul>
+                <li><a href="index.html#about">ABOUT ME</a></li>
+                <li><a href="filmography.html">FILMOGRAPHY</a></li>
+                <li><a href="index.html#gallery">GALLERY</a></li>
+                <li><a href="index.html#testimonials">REVIEWS</a></li>
+                <li><a href="index.html#contact">CONTACT ME</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<section class="page-hero reveal">
+<div>
+<div class="breadcrumb"><a href="index.html">HOME</a> > FILMOGRAPHY</div>
+<h1>Filmography</h1>
+</div>
+<p>
+Explore the cinematic journey of Yash Rangineni through
+award-winning Telugu productions and memorable storytelling
+that continue to inspire audiences.
+</p>
+</section>
+
+<!-- PELLICHOOPULU -->
+<section class="movie">
+<div class="movie-content reveal reveal-left">
+<span>MAIN PRODUCTION | 2016</span>
+<h2>Pellichoopulu</h2>
+<h4>ROMANTIC COMEDY | PRODUCER</h4>
+<p>
+National Award winning Telugu film that transformed modern
+storytelling and became one of the most celebrated films
+of its generation.
+</p>
+</div>
+<div class="movie-image parallax-container">
+<img src="images/pelli.jpeg" alt="Pellichoopulu Poster" class="parallax-img">
+</div>
+</section>
+
+<section class="divider"></section>
+
+<!-- DEAR COMRADE -->
+<section class="movie right">
+<div class="movie-content reveal reveal-right">
+<span>MAIN PRODUCTION | 2019</span>        
+<h2>Dear Comrade</h2>
+<h4>DRAMA / ROMANCE | PRODUCER</h4>
+<p>
+A powerful emotional drama starring Vijay Deverakonda
+and Rashmika Mandanna that gained international recognition.
+</p>
+</div>
+<div class="movie-image parallax-container">
+<img src="images/dear-commrade.jpeg" alt="Dear Comrade Poster" class="parallax-img">
+</div>
+</section>
+
+<!-- OTHER PRODUCTIONS -->
+<section class="other reveal">
+<div class="other-sub">OTHER PRODUCTIONS</div>
+<h2>Diverse Stories,<br>Memorable Cinema</h2>
+<p>
+A collection of productions that contributed to the growth
+of Big Ben Cinemas and Telugu cinema.
+</p>
+
+<div class="grid">
+    <div class="card reveal reveal-delay-1">
+        <img src="images/dorasani1.jpeg" alt="Dorasani">
+        <div class="card-content">
+            <h3>Dorasani</h3>
+            <span>PERIOD DRAMA | 2019</span>
+            <p>
+                A touching romantic drama set against social barriers
+                and class differences. Telugu-language period romance film directed by K.V.R. Mahendra, starring Anand Deverakonda and Shivathmika Rajashekar.
+            </p>
+        </div>
+    </div>
+
+    <div class="card reveal reveal-delay-2">
+        <img src="images/anna.jpeg" alt="Annapurna Photo Studio">
+        <div class="card-content">
+            <h3>Annapurna Photo Studio</h3>
+            <span>ROMANTIC DRAMA | 2023</span>
+            <p>
+                Annapurna Photo Studio typically refers to the 2023 Tollywood romantic comedy-thriller or a localized photography business.
+            </p>
+        </div>
+    </div>
+
+    <div class="card reveal reveal-delay-3">
+        <img src="images/abcd.jpg" alt="ABCD">
+        <div class="card-content">
+            <h3>ABCD</h3>
+            <span>ROMANTIC DRAMA | 2024</span>
+            <p>
+                ABCD is a 2024 Telugu romantic drama film directed by V.V. Vinayak, starring Allu Arjun and Pooja Hegde, produced by Big Ben Cinemas.
+            </p>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<section class="footer">
+<div class="footer-left reveal reveal-left">
+    <h2>Let's Create The<br>Next Telugu Blockbuster</h2>
+    <p>
+        Open to collaborations, film production partnerships,
+        creative ventures and industry opportunities.
+    </p>
+    <div class="footer-nav">
+        <a href="index.html#about">ABOUT ME</a>
+        <a href="filmography.html">FILMOGRAPHY</a>
+        <a href="index.html#gallery">GALLERY</a>
+        <a href="index.html#testimonials">REVIEWS</a>
+        <a href="index.html#contact">CONTACTS</a>
+    </div>
+</div>
+
+<div class="footer-right reveal reveal-right">
+    <h4>PRODUCTION HOUSE</h4>
+    <a href="https://bigbencinemas.com" target="_blank">bigbencinemas.com</a>
+
+    <h4>PROFESSIONAL CONTACT</h4>
+    <a href="mailto:info@bigbencinemas.com">info@bigbencinemas.com</a>
+
+    <a href="https://bigbencinemas.com" target="_blank" class="visit-btn">
+        Visit Website
+    </a>
+</div>
+</section>
+
+<!-- Scroll to Top Button -->
+<button id="scrollTopBtn">
+    ↑
+</button>
+
+<!-- External Interactions Script -->
+<script src="script.js" defer></script>
+</body>
+</html>
