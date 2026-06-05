@@ -144,6 +144,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const highlightNav = () => {
     let scrollY = window.pageYOffset;
+
+    // Do not activate any link when at the very top of the page
+    if (scrollY === 0) {
+      navLinks.forEach(link => link.classList.remove('nav-active'));
+      return;
+    }
     
     sections.forEach(current => {
       const sectionHeight = current.offsetHeight;

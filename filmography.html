@@ -4,250 +4,404 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Filmography | Yash Rangineni</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="Explore the complete filmography of Yash Rangineni — National Award-winning Telugu film producer behind Pellichoopulu, Dear Comrade, and more.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
 }
 
 body{
-background:#080402;
-color:white;
-font-family:'Montserrat',sans-serif;
-overflow-x:hidden;
+    background:#080402;
+    color:white;
+    font-family:'Montserrat',sans-serif;
+    overflow-x:hidden;
 }
 
 a{
-text-decoration:none;
-color:white;
+    text-decoration:none;
+    color:white;
 }
 
-/* NAVBAR */
+/* =====================
+   NAVBAR
+   ===================== */
 header{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-z-index:1000;
-padding:25px 80px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:rgba(0,0,0,.95);
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    padding:25px 80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(0,0,0,.95);
 }
 
 .logo{
-font-size:28px;
-color:#c8a47a;
+    font-size:28px;
+    color:#c8a47a;
 }
 
 nav ul{
-display:flex;
-gap:35px;
-list-style:none;
+    display:flex;
+    gap:35px;
+    list-style:none;
 }
 
 nav a{
-font-size:14px;
-letter-spacing:2px;
-transition:.3s;
+    font-size:14px;
+    letter-spacing:2px;
+    transition:.3s;
 }
 
-nav a:hover{
-color:#c8a47a;
-}
+nav a:hover{ color:#c8a47a; }
 
-/* HERO */
+nav ul li a{
+    position:relative;
+    padding-bottom:4px;
+}
+nav ul li a::after{
+    content:'';
+    position:absolute;
+    bottom:0; left:0;
+    width:0;
+    height:2px;
+    background:linear-gradient(90deg,#c8a47a,#e8d5b8);
+    transition:width 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+nav ul li a:hover::after{ width:100%; }
+
+/* =====================
+   PAGE HERO
+   ===================== */
 .page-hero{
-padding:220px 10% 120px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:#120906;
+    padding:220px 10% 120px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#120906;
 }
 
 .page-hero h1{
-font-family:'Cormorant Garamond',serif;
-font-size:90px;
-font-weight:600;
-margin-top:20px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:90px;
+    font-weight:600;
+    margin-top:20px;
 }
 
 .page-hero p{
-max-width:550px;
-line-height:1.9;
-color:#d6d6d6;
-font-size:18px;
+    max-width:550px;
+    line-height:1.9;
+    color:#d6d6d6;
+    font-size:18px;
 }
 
 .breadcrumb{
-color:#c8a47a;
-letter-spacing:3px;
-font-size:14px;
+    color:#c8a47a;
+    letter-spacing:3px;
+    font-size:14px;
 }
 
-/* MOVIE SECTIONS */
-.movie{
-display:flex;
-align-items:stretch;
-min-height:500px;
-background:#080402;
-overflow:hidden;
-}
-
-.movie-image{
-    width:50%;
-    height:auto; /* allow natural image height */
+/* =====================
+   FEATURED SHOWCASE
+   (Pellichoopulu & Dear Comrade only)
+   ===================== */
+.showcase{
+    display:flex;
+    align-items:center;
+    gap:0;
+    padding:120px 8%;
+    background:#080402;
     position:relative;
     overflow:hidden;
 }
 
-.movie-image img{
+/* Subtle gold rule across the top of each showcase */
+.showcase::before{
+    content:'';
+    position:absolute;
+    top:0; left:8%; right:8%;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(200,164,122,0.3), transparent);
+}
+
+/* ---- Text side ---- */
+.showcase-text{
+    flex:1;
+    padding-right:70px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.showcase-year{
+    font-family:'Cormorant Garamond',serif;
+    font-size:110px;
+    font-weight:700;
+    color:rgba(200,164,122,0.12);
+    line-height:1;
+    letter-spacing:-4px;
+    margin-bottom:-30px;
+    user-select:none;
+}
+
+.showcase-label{
+    font-size:12px;
+    letter-spacing:4px;
+    color:#c8a47a;
+    text-transform:uppercase;
+    margin-bottom:16px;
+}
+
+.showcase-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:68px;
+    font-weight:600;
+    line-height:1.05;
+    color:#fff;
+    margin-bottom:14px;
+}
+
+.showcase-meta{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:10px;
+    flex-wrap:wrap;
+}
+
+.showcase-genre{
+    font-size:12px;
+    letter-spacing:3px;
+    color:#c8a47a;
+    text-transform:uppercase;
+}
+
+.meta-dot{
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:rgba(200,164,122,0.4);
+    flex-shrink:0;
+}
+
+.showcase-role{
+    font-size:12px;
+    letter-spacing:3px;
+    color:rgba(200,164,122,0.7);
+    text-transform:uppercase;
+}
+
+.showcase-house{
+    font-size:12px;
+    letter-spacing:3px;
+    color:rgba(255,255,255,0.35);
+    text-transform:uppercase;
+    margin-bottom:28px;
+}
+
+/* Gold divider */
+.showcase-divider{
+    width:50px;
+    height:1px;
+    background:linear-gradient(90deg,#c8a47a,transparent);
+    margin-bottom:28px;
+}
+
+.showcase-desc{
+    font-size:17px;
+    line-height:1.9;
+    color:#b0b0b0;
+    max-width:480px;
+    margin-bottom:32px;
+}
+
+/* Award badge */
+.showcase-award{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 22px;
+    border:1px solid rgba(200,164,122,0.35);
+    color:#c8a47a;
+    font-size:11px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    background:rgba(200,164,122,0.04);
+}
+
+.showcase-award::before{
+    content:'★';
+    font-size:14px;
+}
+
+/* ---- Image side ---- */
+.showcase-image{
+    flex:0 0 auto;
+    width:380px;
+    position:relative;
+}
+
+.showcase-image img{
     width:100%;
     height:auto;
-    object-fit:contain;
     display:block;
+    object-fit:contain;
     image-rendering:auto;
+    position:relative;
+    z-index:1;
 }
 
-.movie-image::after {
-content:'';
-position:absolute;
-inset:0;
-background:rgba(0,0,0,0.15);
-z-index:1;
-pointer-events:none;
+/* Subtle gold glow behind poster */
+.showcase-image::before{
+    content:'';
+    position:absolute;
+    inset:-20px;
+    background:radial-gradient(ellipse at center, rgba(200,164,122,0.08) 0%, transparent 70%);
+    z-index:0;
+    border-radius:2px;
 }
 
-.movie-content{
-width:50%;
-padding:60px 80px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-box-sizing:border-box;
+/* ---- Reversed layout (Image Left, Text Right) ---- */
+.showcase.reverse{
+    flex-direction:row-reverse;
 }
 
-.movie span{
-color:#c8a47a;
-letter-spacing:3px;
-font-size:14px;
+.showcase.reverse .showcase-text{
+    padding-right:0;
+    padding-left:70px;
 }
 
-.movie h2{
-font-family:'Cormorant Garamond',serif;
-font-size:56px;
-margin:20px 0;
-color:#fff;
-line-height:1.1;
+.showcase.reverse .showcase-divider{
+    background:linear-gradient(90deg,transparent,#c8a47a);
 }
 
-.movie h4{
-color:#c8a47a;
-letter-spacing:3px;
-margin-bottom:25px;
-font-weight:500;
+/* =====================
+   ANIMATIONS
+   ===================== */
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),
+               transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
 }
 
-.movie p{
-line-height:1.9;
-font-size:18px;
-color:#d9d9d9;
+.reveal-left{
+    opacity:0;
+    transform:translateX(-60px);
+    transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),
+               transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.reveal-left.active{
+    opacity:1;
+    transform:translateX(0);
 }
 
-/* Alternate Layout Ordering */
-/* Movie 1 (Default): Text Left, Image Right */
-.movie .movie-content {
-order:1;
+.reveal-right{
+    opacity:0;
+    transform:translateX(60px);
+    transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),
+               transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);
 }
-.movie .movie-image {
-order:2;
-}
-
-/* Movie 2 (Alternating): Image Left, Text Right */
-.movie.right .movie-content {
-order:2;
-padding-left:100px;
-}
-.movie.right .movie-image {
-order:1;
+.reveal-right.active{
+    opacity:1;
+    transform:translateX(0);
 }
 
-/* Gap between movie sections */
-.movie + .movie{
-    margin-top: 150px;
-}
+.reveal-delay-1{ transition-delay:0.1s; }
+.reveal-delay-2{ transition-delay:0.2s; }
+.reveal-delay-3{ transition-delay:0.3s; }
+.reveal-delay-4{ transition-delay:0.4s; }
+.reveal-delay-5{ transition-delay:0.5s; }
 
-/* OTHER PRODUCTIONS */
+/* =====================
+   OTHER PRODUCTIONS
+   (unchanged)
+   ===================== */
 .other{
-    padding:140px 10% 220px;
+    padding:140px 10% 180px;
 }
 
 .other-sub{
-text-align:center;
-letter-spacing:4px;
-color:#c8a47a;
-margin-bottom:20px;
+    text-align:center;
+    letter-spacing:4px;
+    color:#c8a47a;
+    margin-bottom:20px;
 }
 
 .other h2{
-font-family:'Cormorant Garamond',serif;
-font-size:70px;
-text-align:center;
-margin-bottom:20px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:70px;
+    text-align:center;
+    margin-bottom:20px;
 }
 
 .other p{
-text-align:center;
-color:#d6d6d6;
-margin-bottom:70px;
+    text-align:center;
+    color:#d6d6d6;
+    margin-bottom:70px;
 }
 
 .grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:40px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
 }
 
 .card{
-background:#150905;
-overflow:hidden;
+    background:#150905;
+    overflow:hidden;
+    transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94),
+               box-shadow 0.5s ease;
+}
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 50px rgba(200,164,122,0.15);
 }
 
 .card img{
     width:100%;
     height:520px;
     object-fit:cover;
+    transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
 }
+.card:hover img{ transform:scale(1.05); }
 
-.card-content{
-padding:30px;
-}
+.card-content{ padding:30px; }
 
 .card h3{
-font-family:'Cormorant Garamond',serif;
-font-size:42px;
-margin-bottom:10px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:42px;
+    margin-bottom:10px;
 }
 
 .card span{
-color:#c8a47a;
-letter-spacing:2px;
-font-size:14px;
-display:block;
-margin-bottom:15px;
+    color:#c8a47a;
+    letter-spacing:2px;
+    font-size:14px;
+    display:block;
+    margin-bottom:15px;
 }
 
 .card p{
-text-align:left;
-line-height:1.8;
-margin:0;
+    text-align:left;
+    line-height:1.8;
+    margin:0;
+    color:#d6d6d6;
 }
 
-/* FOOTER */
+/* =====================
+   FOOTER
+   ===================== */
 .footer{
     background:#000;
     padding:150px 10%;
@@ -256,13 +410,8 @@ margin:0;
     gap:120px;
 }
 
-.footer-left{
-    flex:1;
-}
-
-.footer-right{
-    width:450px;
-}
+.footer-left{ flex:1; }
+.footer-right{ width:450px; }
 
 .footer-left h2{
     font-family:'Cormorant Garamond',serif;
@@ -290,110 +439,39 @@ margin:0;
     letter-spacing:2px;
     text-transform:uppercase;
 }
-
-.footer-nav a:hover{
-    color:#c8a47a;
-}
+.footer-nav a:hover{ color:#c8a47a; }
 
 .footer-right h4{
-letter-spacing:3px;
-color:#c8a47a;
-margin-bottom:15px;
+    letter-spacing:3px;
+    color:#c8a47a;
+    margin-bottom:15px;
 }
 
 .footer-right a{
-display:block;
-font-size:32px;
-margin-bottom:50px;
-text-decoration:underline;
+    display:block;
+    font-size:32px;
+    margin-bottom:50px;
+    text-decoration:underline;
 }
 
 .visit-btn{
-display:inline-block;
-padding:18px 60px;
-border:1px solid #c8a47a;
-margin-top:20px;
-transition:.3s;
+    display:inline-block;
+    padding:18px 60px;
+    border:1px solid #c8a47a;
+    margin-top:20px;
+    transition:.3s;
 }
-
 .visit-btn:hover{
-background:#c8a47a;
-color:black;
+    background:#c8a47a;
+    color:black;
 }
 
-@media(max-width:900px){
-.page-hero{
-flex-direction:column;
-gap:40px;
-}
-.grid{
-grid-template-columns:1fr;
-}
-.movie{
-flex-direction:column;
-height:auto;
-min-height:auto;
-}
-.movie-image{
-width:100%;
-height:350px;
-}
-.movie-content{
-width:100%;
-padding:40px 30px;
-}
-/* On mobile/tablet, keep Image on top, Text below */
-.movie .movie-image,
-.movie.right .movie-image{
-order:1;
-}
-.movie .movie-content,
-.movie.right .movie-content{
-order:2;
-padding-left:30px;
-}
-.movie h2{
-font-size:48px;
-}
-.footer{
-flex-direction:column;
-gap:50px;
-}
-}
-
-/* --- PREMIUM EFFECTS & ANIMATIONS --- */
-.reveal{
-    opacity:0;
-    transform:translateY(50px);
-    transition:opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-               transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
-}
-.reveal-delay-1{ transition-delay:0.1s; }
-.reveal-delay-2{ transition-delay:0.2s; }
-.reveal-delay-3{ transition-delay:0.3s; }
-.reveal-delay-4{ transition-delay:0.4s; }
-
-.parallax-container {
-    overflow: hidden;
-    position: relative;
-}
-.parallax-img {
-    height: 120% !important;
-    width: 100% !important;
-    object-fit: cover !important;
-    position: relative;
-    will-change: transform;
-}
-
-/* Custom Cursor Trail */
+/* =====================
+   PREMIUM FX
+   ===================== */
 .cursor-dot{
     position:fixed;
-    width:8px;
-    height:8px;
+    width:8px; height:8px;
     background:#c8a47a;
     border-radius:50%;
     pointer-events:none;
@@ -403,8 +481,7 @@ gap:50px;
 }
 .cursor-ring{
     position:fixed;
-    width:35px;
-    height:35px;
+    width:35px; height:35px;
     border:1.5px solid rgba(200,164,122,0.5);
     border-radius:50%;
     pointer-events:none;
@@ -412,8 +489,7 @@ gap:50px;
     transition:transform 0.08s ease, width 0.3s ease, height 0.3s ease;
 }
 .cursor-ring.expand{
-    width:55px;
-    height:55px;
+    width:55px; height:55px;
     border-color:rgba(200,164,122,0.8);
 }
 .film-grain{
@@ -427,229 +503,263 @@ gap:50px;
     background-size:128px 128px;
 }
 
-/* Scroll To Top Button */
 #scrollTopBtn{
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 55px;
-    height: 55px;
-    border: 1px solid #c7a16b;
-    border-radius: 50%;
-    background: #000;
-    color: #c7a16b;
-    font-size: 24px;
-    cursor: pointer;
-    display: none;
-    z-index: 9999;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(199,161,107,0.4);
+    position:fixed;
+    bottom:30px; right:30px;
+    width:55px; height:55px;
+    border:1px solid #c7a16b;
+    border-radius:50%;
+    background:#000;
+    color:#c7a16b;
+    font-size:24px;
+    cursor:pointer;
+    display:none;
+    z-index:9999;
+    transition:all 0.3s ease;
+    box-shadow:0 0 15px rgba(199,161,107,0.4);
 }
 #scrollTopBtn:hover{
-    background: #fff;
-    color: #000;
-    transform: translateY(-5px);
+    background:#fff;
+    color:#000;
+    transform:translateY(-5px);
 }
 
-/* Hover lifts and visual highlights */
-.card {
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease;
-    overflow: hidden;
-}
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 50px rgba(200,164,122,0.15);
-}
-.card img {
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.card:hover img {
-    transform: scale(1.05);
+/* =====================
+   RESPONSIVE
+   ===================== */
+@media(max-width:1100px){
+    .showcase-title{ font-size:54px; }
+    .showcase-image{ width:320px; }
+    .showcase-text{ padding-right:50px; }
+    .showcase.reverse .showcase-text{ padding-left:50px; }
 }
 
-/* Gold navigation underlines */
-nav ul li a{
-    position:relative;
-    padding-bottom:4px;
-}
-nav ul li a::after{
-    content:'';
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:0;
-    height:2px;
-    background:linear-gradient(90deg, #c8a47a, #e8d5b8);
-    transition:width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-nav ul li a:hover::after{
-    width:100%;
+@media(max-width:900px){
+    .page-hero{ flex-direction:column; gap:40px; }
+
+    .showcase{
+        flex-direction:column !important;
+        padding:80px 6%;
+        gap:50px;
+    }
+    .showcase.reverse{ flex-direction:column !important; }
+
+    .showcase-text{
+        padding-right:0 !important;
+        padding-left:0 !important;
+        order:2;
+    }
+    .showcase-image{
+        width:100%;
+        max-width:360px;
+        margin:0 auto;
+        order:1;
+    }
+
+    .showcase-year{ font-size:80px; }
+    .showcase-title{ font-size:48px; }
+
+    .grid{ grid-template-columns:1fr; }
+    .footer{ flex-direction:column; gap:50px; }
 }
 
 @media(max-width:768px){
-    .cursor-dot, .cursor-ring {
-        display:none !important;
-    }
-    #scrollTopBtn{
-        width:50px;
-        height:50px;
-        font-size:20px;
-        bottom:20px;
-        right:20px;
-    }
+    header{ padding:20px 24px; }
+    .cursor-dot, .cursor-ring { display:none !important; }
+    #scrollTopBtn{ width:50px; height:50px; font-size:20px; bottom:20px; right:20px; }
+    .page-hero{ padding:160px 6% 80px; }
+    .page-hero h1{ font-size:60px; }
+    .showcase-title{ font-size:40px; }
+    .showcase-year{ font-size:64px; }
+    .other h2{ font-size:50px; }
 }
 </style>
 </head>
 <body>
-    <!-- Custom Cursor Trail -->
-    <div class="cursor-dot" id="cursor-dot"></div>
-    <div class="cursor-ring" id="cursor-ring"></div>
 
-    <!-- Film Grain Overlay -->
-    <div class="film-grain"></div>
+<!-- Custom Cursor Trail -->
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
 
-    <header>
-        <div class="logo">★</div>
-        <nav>
-            <ul>
-                <li><a href="index.html#about">ABOUT ME</a></li>
-                <li><a href="filmography.html">FILMOGRAPHY</a></li>
-                <li><a href="index.html#gallery">GALLERY</a></li>
-                <li><a href="index.html#testimonials">REVIEWS</a></li>
-                <li><a href="index.html#contact">CONTACT ME</a></li>
-            </ul>
-        </nav>
-    </header>
+<!-- Film Grain Overlay -->
+<div class="film-grain"></div>
 
+<header>
+    <a href="index.html" class="logo">★</a>
+    <nav>
+        <ul>
+    <li><a href="index.html#about">ABOUT ME</a></li>
+        <li><a href="filmography.html">FILMOGRAPHY</a></li>
+        <li><a href="index.html#gallery">GALLERY</a></li>
+        <li><a href="index.html#testimonials">REVIEWS</a></li>
+        <li><a href="index.html#contact">CONTACT ME</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- PAGE HERO -->
 <section class="page-hero reveal">
-<div>
-<div class="breadcrumb"><a href="index.html">HOME</a> > FILMOGRAPHY</div>
-<h1>Filmography</h1>
-</div>
-<p>
-Explore the cinematic journey of Yash Rangineni through
-award-winning Telugu productions and memorable storytelling
-that continue to inspire audiences.
-</p>
+    <div>
+        <div class="breadcrumb">HOME > FILMOGRAPHY</div>
+        <h1>Filmography</h1>
+    </div>
+    <p>
+        Explore the cinematic journey of Yash Rangineni through
+        award-winning Telugu productions and memorable storytelling
+        that continue to inspire audiences.
+    </p>
 </section>
 
-<!-- PELLICHOOPULU -->
-<section class="movie">
-<div class="movie-content reveal reveal-left">
-<span>MAIN PRODUCTION | 2016</span>
-<h2>Pellichoopulu</h2>
-<h4>ROMANTIC COMEDY | PRODUCER</h4>
-<p>
-National Award winning Telugu film that transformed modern
-storytelling and became one of the most celebrated films
-of its generation.
-</p>
-</div>
-<div class="movie-image parallax-container">
-<img src="images/pelli.jpeg" alt="Pellichoopulu Poster" class="parallax-img">
-</div>
-</section>
-
-<section class="divider"></section>
-
-<!-- DEAR COMRADE -->
-<section class="movie right">
-<div class="movie-content reveal reveal-right">
-<span>MAIN PRODUCTION | 2019</span>        
-<h2>Dear Comrade</h2>
-<h4>DRAMA / ROMANCE | PRODUCER</h4>
-<p>
-A powerful emotional drama starring Vijay Deverakonda
-and Rashmika Mandanna that gained international recognition.
-</p>
-</div>
-<div class="movie-image parallax-container">
-<img src="images/dear-commrade.jpeg" alt="Dear Comrade Poster" class="parallax-img">
-</div>
-</section>
-
-<!-- OTHER PRODUCTIONS -->
-<section class="other reveal">
-<div class="other-sub">OTHER PRODUCTIONS</div>
-<h2>Diverse Stories,<br>Memorable Cinema</h2>
-<p>
-A collection of productions that contributed to the growth
-of Big Ben Cinemas and Telugu cinema.
-</p>
-
-<div class="grid">
-    <div class="card reveal reveal-delay-1">
-        <img src="images/dorasani1.jpeg" alt="Dorasani">
-        <div class="card-content">
-            <h3>Dorasani</h3>
-            <span>PERIOD DRAMA | 2019</span>
-            <p>
-                A touching romantic drama set against social barriers
-                and class differences. Telugu-language period romance film directed by K.V.R. Mahendra, starring Anand Deverakonda and Shivathmika Rajashekar.
-            </p>
+<!-- ================================================
+     PELLICHOOPULU — Text Left, Poster Right
+     ================================================ -->
+<section class="showcase">
+    <!-- Text -->
+    <div class="showcase-text">
+        <div class="showcase-year reveal-left">2016</div>
+        <div class="showcase-label reveal-left reveal-delay-1">Main Production</div>
+        <h2 class="showcase-title reveal-left reveal-delay-2">Pellichoopulu</h2>
+        <div class="showcase-meta reveal-left reveal-delay-3">
+            <span class="showcase-genre">Romantic Comedy</span>
+            <span class="meta-dot"></span>
+            <span class="showcase-role">Producer</span>
+        </div>
+        <div class="showcase-house reveal-left reveal-delay-3">Big Ben Cinemas</div>
+        <div class="showcase-divider reveal-left reveal-delay-3"></div>
+        <p class="showcase-desc reveal-left reveal-delay-4">
+            A landmark Telugu film that redefined modern romantic storytelling.
+            Directed by Tharun Bhascker, Pellichoopulu became one of the most
+            celebrated films of its generation — resonating with youth across
+            India and earning its place in Telugu cinema history.
+        </p>
+        <div class="showcase-award reveal-left reveal-delay-5">
+            National Award Winner — Best Telugu Film
         </div>
     </div>
 
-    <div class="card reveal reveal-delay-2">
-        <img src="images/anna.jpeg" alt="Annapurna Photo Studio">
-        <div class="card-content">
-            <h3>Annapurna Photo Studio</h3>
-            <span>ROMANTIC DRAMA | 2023</span>
-            <p>
-                Annapurna Photo Studio typically refers to the 2023 Tollywood romantic comedy-thriller or a localized photography business.
-            </p>
-        </div>
+    <!-- Poster -->
+    <div class="showcase-image reveal-right">
+        <img src="images/pelli.webp" alt="Pellichoopulu Movie Poster">
     </div>
+</section>
 
-    <div class="card reveal reveal-delay-3">
-        <img src="images/abcd.jpg" alt="ABCD">
-        <div class="card-content">
-            <h3>ABCD</h3>
-            <span>ROMANTIC DRAMA | 2024</span>
-            <p>
-                ABCD is a 2024 Telugu romantic drama film directed by V.V. Vinayak, starring Allu Arjun and Pooja Hegde, produced by Big Ben Cinemas.
-            </p>
+<!-- ================================================
+     DEAR COMRADE — Poster Left, Text Right
+     ================================================ -->
+<section class="showcase reverse">
+    <!-- Text -->
+    <div class="showcase-text">
+        <div class="showcase-year reveal-right">2019</div>
+        <div class="showcase-label reveal-right reveal-delay-1">Main Production</div>
+        <h2 class="showcase-title reveal-right reveal-delay-2">Dear Comrade</h2>
+        <div class="showcase-meta reveal-right reveal-delay-3">
+            <span class="showcase-genre">Drama / Romance</span>
+            <span class="meta-dot"></span>
+            <span class="showcase-role">Producer</span>
+        </div>
+        <div class="showcase-house reveal-right reveal-delay-3">Big Ben Cinemas</div>
+        <div class="showcase-divider reveal-right reveal-delay-3"></div>
+        <p class="showcase-desc reveal-right reveal-delay-4">
+            A powerful emotional drama starring Vijay Deverakonda and
+            Rashmika Mandanna that gained international recognition.
+            Directed by Bharat Kamma, the film explores love, ambition,
+            and personal struggle with cinematic depth and sincerity.
+        </p>
+        <div class="showcase-award reveal-right reveal-delay-5">
+            International Recognition &amp; Pan-India Release
         </div>
     </div>
-</div>
+    <!-- Poster -->
+    <div class="showcase-image reveal-left">
+        <img src="images/dear.webp" alt="Dear Comrade Movie Poster">
+    </div>
+</section>
+
+
+<!-- ================================================
+     OTHER PRODUCTIONS — unchanged card grid
+     ================================================ -->
+<section class="other">
+    <div class="other-sub reveal">OTHER PRODUCTIONS</div>
+    <h2 class="reveal">Diverse Stories,<br>Memorable Cinema</h2>
+    <p class="reveal">
+        A collection of productions that contributed to the growth
+        of Big Ben Cinemas and Telugu cinema.
+    </p>
+
+    <div class="grid">
+        <div class="card reveal reveal-delay-1">
+            <img src="images/dorasani1.jpeg" alt="Dorasani">
+            <div class="card-content">
+                <h3>Dorasani</h3>
+                <span>PERIOD DRAMA | 2019</span>
+                <p>
+                    A touching romantic drama set against social barriers and class differences.
+                    Directed by K.V.R. Mahendra, starring Anand Deverakonda and Shivathmika Rajashekar.
+                </p>
+            </div>
+        </div>
+
+        <div class="card reveal reveal-delay-2">
+            <img src="images/anna.jpeg" alt="Annapurna Photo Studio">
+            <div class="card-content">
+                <h3>Annapurna Photo Studio</h3>
+                <span>ROMANTIC DRAMA | 2023</span>
+                <p>
+                    A 2023 Tollywood romantic comedy-thriller that blends nostalgia,
+                    love, and suspense in a compelling cinematic package.
+                </p>
+            </div>
+        </div>
+
+        <div class="card reveal reveal-delay-3">
+            <img src="images/abcd.jpg" alt="ABCD">
+            <div class="card-content">
+                <h3>ABCD</h3>
+                <span>ROMANTIC DRAMA | 2024</span>
+                <p>
+                    ABCD is a 2024 Telugu romantic drama directed by V.V. Vinayak,
+                    starring Allu Arjun and Pooja Hegde, produced by Big Ben Cinemas.
+                </p>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- FOOTER -->
 <section class="footer">
-<div class="footer-left reveal reveal-left">
-    <h2>Let's Create The<br>Next Telugu Blockbuster</h2>
-    <p>
-        Open to collaborations, film production partnerships,
-        creative ventures and industry opportunities.
-    </p>
-    <div class="footer-nav">
-        <a href="index.html#about">ABOUT ME</a>
-        <a href="filmography.html">FILMOGRAPHY</a>
-        <a href="index.html#gallery">GALLERY</a>
-        <a href="index.html#testimonials">REVIEWS</a>
-        <a href="index.html#contact">CONTACTS</a>
+    <div class="footer-left reveal-left">
+        <h2>Let's Create The<br>Next Telugu Blockbuster</h2>
+        <p>
+            Open to collaborations, film production partnerships,
+            creative ventures and industry opportunities.
+        </p>
+        <div class="footer-nav">
+            <a href="index.html#about">ABOUT ME</a>
+            <a href="filmography.html">FILMOGRAPHY</a>
+            <a href="index.html#gallery">GALLERY</a>
+            <a href="index.html#testimonials">REVIEWS</a>
+            <a href="index.html#contact">CONTACTS</a>
+        </div>
     </div>
-</div>
 
-<div class="footer-right reveal reveal-right">
-    <h4>PRODUCTION HOUSE</h4>
-    <a href="https://bigbencinemas.com" target="_blank">bigbencinemas.com</a>
+    <div class="footer-right reveal-right">
+        <h4>PRODUCTION HOUSE</h4>
+        <a href="https://bigbencinemas.com" target="_blank">bigbencinemas.com</a>
 
-    <h4>PROFESSIONAL CONTACT</h4>
-    <a href="mailto:info@bigbencinemas.com">info@bigbencinemas.com</a>
+        <h4>PROFESSIONAL CONTACT</h4>
+        <a href="mailto:info@bigbencinemas.com">info@bigbencinemas.com</a>
 
-    <a href="https://bigbencinemas.com" target="_blank" class="visit-btn">
-        Visit Website
-    </a>
-</div>
+        <a href="https://bigbencinemas.com" target="_blank" class="visit-btn">
+            Visit Website
+        </a>
+    </div>
 </section>
 
 <!-- Scroll to Top Button -->
-<button id="scrollTopBtn">
-    ↑
-</button>
+<button id="scrollTopBtn">↑</button>
 
-<!-- External Interactions Script -->
+<!-- External Script -->
 <script src="script.js" defer></script>
 </body>
 </html>
