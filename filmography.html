@@ -7,11 +7,15 @@
 <meta name="description" content="Explore the complete filmography of Yash Rangineni — National Award-winning Telugu film producer behind Pellichoopulu, Dear Comrade, and more.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*{
+* {
     margin:0;
     padding:0;
     box-sizing:border-box;
     scroll-behavior:smooth;
+}
+
+html, body{
+    overflow-x:hidden;
 }
 
 body{
@@ -45,6 +49,14 @@ header{
 .logo{
     font-size:28px;
     color:#c8a47a;
+}
+
+.menu-btn {
+    display: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: #c8a47a;
+    z-index: 100;
 }
 
 nav ul{
@@ -456,7 +468,7 @@ nav ul li a:hover::after{ width:100%; }
 
 .visit-btn{
     display:inline-block;
-    padding:18px 60px;
+    padding:18px 30px;
     border:1px solid #c8a47a;
     margin-top:20px;
     transition:.3s;
@@ -505,7 +517,7 @@ nav ul li a:hover::after{ width:100%; }
 
 #scrollTopBtn{
     position:fixed;
-    bottom:30px; right:30px;
+    bottom:30px; right:10px;
     width:55px; height:55px;
     border:1px solid #c7a16b;
     border-radius:50%;
@@ -564,14 +576,71 @@ nav ul li a:hover::after{ width:100%; }
 }
 
 @media(max-width:768px){
-    header{ padding:20px 24px; }
+    header{
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px 24px;
+        background: rgba(6, 2, 1, 0.95);
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(6, 2, 1, 0.95);
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(200,164,122,0.2);
+        display: none;
+        z-index: 99;
+    }
+
+    nav.nav-open {
+        display: block;
+    }
+
+    nav ul{
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
     .cursor-dot, .cursor-ring { display:none !important; }
     #scrollTopBtn{ width:50px; height:50px; font-size:20px; bottom:20px; right:20px; }
     .page-hero{ padding:160px 6% 80px; }
-    .page-hero h1{ font-size:60px; }
-    .showcase-title{ font-size:40px; }
-    .showcase-year{ font-size:64px; }
-    .other h2{ font-size:50px; }
+    .page-hero h1{ font-size:45px; }
+    .showcase-title{ font-size:32px; }
+    .showcase-year{ font-size:50px; }
+    .other h2{ font-size:40px; }
+
+    .footer {
+        padding: 60px 20px;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .footer-left h2 {
+        font-size: 40px;
+    }
+
+    .footer-right {
+        width: 100%;
+    }
+
+    .footer-right a {
+        font-size: 20px;
+        margin-bottom: 30px;
+        word-break: break-all;
+    }
+
+    .footer-nav {
+        flex-direction: column;
+        gap: 15px;
+    }
 }
 </style>
 </head>
@@ -586,6 +655,7 @@ nav ul li a:hover::after{ width:100%; }
 
 <header>
     <a href="index.html" class="logo">★</a>
+    <div class="menu-btn" id="menu-btn">&#9776;</div>
     <nav>
         <ul>
     <li><a href="index.html#about">ABOUT ME</a></li>

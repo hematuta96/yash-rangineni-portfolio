@@ -1,5 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // --- MOBILE MENU TOGGLE ---
+  const menuBtn = document.getElementById('menu-btn');
+  const navMenu = document.querySelector('nav');
+  if (menuBtn && navMenu) {
+      menuBtn.addEventListener('click', () => {
+          navMenu.classList.toggle('nav-open');
+      });
+  }
+
   // --- FILM GRAIN OVERLAY ---
   // Create grain element if it doesn't exist
   if (!document.querySelector('.film-grain')) {
@@ -105,12 +114,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- PARALLAX EFFECT FOR HERO SECTION ---
   const heroBg = document.getElementById('hero-bg');
-  if (heroBg) {
+  const heroImage = document.querySelector('.hero-image');
+  const heroContent = document.querySelector('.hero-content');
+  
+  if (heroBg || heroImage || heroContent) {
     window.addEventListener('scroll', () => {
       const scrollPos = window.pageYOffset;
       if (scrollPos <= window.innerHeight) {
-        // Subtle translate on scroll
-        heroBg.style.transform = `scale(1.15) translateY(${scrollPos * 0.35}px)`;
+        // Multi-layer parallax
+        if (heroBg) {
+          heroBg.style.transform = `scale(1.15) translateY(${scrollPos * 0.35}px)`;
+        }
+        if (heroImage) {
+          // Person moves slightly down, creating depth against the background
+          heroImage.style.transform = `translateY(${scrollPos * 0.15}px)`;
+        }
+        if (heroContent) {
+          // Text moves up slightly or stays still relatively
+          heroContent.style.transform = `translateY(${scrollPos * 0.25}px)`;
+        }
       }
     });
   }
